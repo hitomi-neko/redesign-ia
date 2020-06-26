@@ -109,15 +109,15 @@ const renderJson2 = (json) => {
 
     nomalFacultyDiv.appendChild(nomalFacultyImage);
     nomalFacultyDiv.appendChild(nomalFacultyname);
-    nomalFacultyDiv.appendChild(nomalFacultynameEn);
     nomalFacultyDiv.appendChild(nomalFacultyTitle);
+    nomalFacultyDiv.appendChild(nomalFacultynameEn);
     nomalFacultyDiv.appendChild(nomalFacultyStudio);
     nomalFacultyDiv.appendChild(nomalFacultyMajor);
     document.getElementById('nomalFaculty').appendChild(nomalFacultyDiv);
     englishFacultyDiv.appendChild(englishFacultyImage);
     englishFacultyDiv.appendChild(englishFacultyname);
-    englishFacultyDiv.appendChild(englishFacultynameJa);
     englishFacultyDiv.appendChild(englishFacultyTitle);
+    englishFacultyDiv.appendChild(englishFacultynameJa);
     englishFacultyDiv.appendChild(englishFacultyStudio);
     englishFacultyDiv.appendChild(englishFacultyMajor);
     document.getElementById('englishFaculty').appendChild(englishFacultyDiv);
@@ -215,6 +215,8 @@ document.getElementById("button").onclick = function () {
     document.getElementById('easyAdmissionText').style.display = "none";
 
     document.getElementById('nomalQText').style.display = "none";
+    document.getElementById('englishQText').style.display = "block";
+    document.getElementById('easyQText').style.display = "none";
 
   } else if (langBottonClass == "close") {
     langMode = 0;
@@ -273,6 +275,8 @@ document.getElementById("button").onclick = function () {
     document.getElementById('easyAdmissionText').style.display = "none";
 
     document.getElementById('nomalQText').style.display = "block";
+    document.getElementById('englishQText').style.display = "none";
+    document.getElementById('easyQText').style.display = "none";
   }
 
 };
@@ -342,6 +346,8 @@ document.getElementById("button2").onclick = function () {
     document.getElementById('easyAdmissionText').style.display = "block";
 
     document.getElementById('nomalQText').style.display = "none";
+    document.getElementById('englishQText').style.display = "none";
+    document.getElementById('easyQText').style.display = "block";
 
   } else if (langBotton2Class == "close") {
     langMode = 0;
@@ -400,6 +406,8 @@ document.getElementById("button2").onclick = function () {
     document.getElementById('easyAdmissionText').style.display = "none";
 
     document.getElementById('nomalQText').style.display = "block";
+    document.getElementById('englishQText').style.display = "none";
+    document.getElementById('easyQText').style.display = "none";
   }
 };
 
