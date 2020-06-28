@@ -16,6 +16,7 @@ const renderJson = (json) => {
         const bookWriter = document.createElement("span");
         const bookTeacher = document.createElement("span");
         const bookReason = document.createElement("span");
+        const bookTextDiv = document.createElement("div");
         const bookAbout = document.createElement("span");
         const bookLink = document.createElement("a");
         const bookLink2 = document.createElement("a");
@@ -26,6 +27,7 @@ const renderJson = (json) => {
         bookWriter.className = 'book-writer';
         bookTeacher.className = 'book-teacher';
         bookReason.className = 'book-reason';
+        bookTextDiv.className = 'book-text-box'
         bookAbout.className = 'book-about';
         bookLink.className = 'book-link';
         bookLink2.className = 'book-link2';
@@ -44,11 +46,13 @@ const renderJson = (json) => {
 
         bookDiv.appendChild(bookTitle);
         bookDiv.appendChild(bookWriter);
-        bookDiv.appendChild(bookTeacher);
         bookDiv.appendChild(bookReason);
-        bookDiv.appendChild(bookAbout);
-        bookDiv.appendChild(bookLink);
-        bookDiv.appendChild(bookLink2);
+        bookDiv.appendChild(bookTeacher);
+        // bookDiv.appendChild(bookReason);
+        bookDiv.appendChild(bookTextDiv);
+        bookTextDiv.appendChild(bookAbout);
+        bookTextDiv.appendChild(bookLink);
+        bookTextDiv.appendChild(bookLink2);
         document.getElementById('book').appendChild(bookDiv);
         //englishStudioDiv.appendChild(englishStudioTitle);
     });
@@ -73,6 +77,132 @@ const getData = async () => {
 
 getData();
 
+//初回読み込み時の言語
+window.onload = function () {
+    var langBotton = document.getElementById("button");
+    var langBotton2 = document.getElementById("button2");
+
+    if (document.URL.match("/?lang=0")) {
+
+    }
+    else if (document.URL.match("/?lang=1")) {
+        langMode = 1;
+        langBotton.classList.remove('open');
+        langBotton.classList.add('close');
+
+        for (var i = 0; i <= 8; i++) {
+            document.getElementById('nomalSubtitle' + (i + 1).toString()).style.display = "none";
+            document.getElementById('easySubtitle' + (i + 1).toString()).style.display = "none";
+            document.getElementById('englishSubtitle' + (i + 1).toString()).style.display = "block";
+        }
+
+        document.getElementById('nomalButton').style.display = "none";
+        document.getElementById('englishButton').style.display = "block";
+        document.getElementById('nomalButton2').style.display = "block";
+        document.getElementById('easyButton2').style.display = "none";
+    }
+
+    else if (document.URL.match("/?lang=2")) {
+        langBotton2.classList.remove('open');
+        langBotton2.classList.add('close');
+        langMode = 2;
+
+        for (var i = 0; i <= 8; i++) {
+            document.getElementById('nomalSubtitle' + (i + 1).toString()).style.display = "none";
+            document.getElementById('easySubtitle' + (i + 1).toString()).style.display = "block";
+            document.getElementById('englishSubtitle' + (i + 1).toString()).style.display = "none";
+        }
+
+        document.getElementById('nomalButton').style.display = "block";
+        document.getElementById('englishButton').style.display = "none";
+        document.getElementById('nomalButton2').style.display = "none";
+        document.getElementById('easyButton2').style.display = "block";
+
+    }
+};
+
+//ページ内の切り替え
+document.getElementById("button").onclick = function () {
+    var langBotton = document.getElementById("button");
+    var langBottonClass = langBotton.getAttribute("class");
+    //var langBottonWork = document.getElementById("buttonWork");
+    //var langBottonWorkClass = langBotton.getAttribute("class");
+
+    if (langBottonClass == "open") {
+        langBotton.classList.remove('open');
+        langBotton.classList.add('close');
+        langMode = 1;
+
+        for (var i = 0; i <= 8; i++) {
+            document.getElementById('nomalSubtitle' + (i + 1).toString()).style.display = "none";
+            document.getElementById('easySubtitle' + (i + 1).toString()).style.display = "none";
+            document.getElementById('englishSubtitle' + (i + 1).toString()).style.display = "block";
+        }
+        //langBottonWork.classList.remove('open');
+        //langBottonWork.classList.add('close');
+
+        document.getElementById('nomalButton').style.display = "none";
+        document.getElementById('englishButton').style.display = "block";
+        document.getElementById('nomalButton2').style.display = "block";
+        document.getElementById('easyButton2').style.display = "none";
+
+    } else if (langBottonClass == "close") {
+        langBotton.classList.remove('close');
+        langBotton.classList.add('open');
+        langMode = 0;
+
+        for (var i = 0; i <= 8; i++) {
+            document.getElementById('nomalSubtitle' + (i + 1).toString()).style.display = "block";
+            document.getElementById('easySubtitle' + (i + 1).toString()).style.display = "none";
+            document.getElementById('englishSubtitle' + (i + 1).toString()).style.display = "none";
+        }
+        //langBottonWork.classList.remove('close');
+        //langBottonWork.classList.add('open');
+        document.getElementById('nomalButton').style.display = "block";
+        document.getElementById('englishButton').style.display = "none";
+        document.getElementById('nomalButton2').style.display = "block";
+        document.getElementById('easyButton2').style.display = "none";
+    }
+};
+
+//やさしいにほんご
+document.getElementById("button2").onclick = function () {
+    var langBotton2 = document.getElementById("button2");
+    var langBotton2Class = langBotton2.getAttribute("class");
+
+    if (langBotton2Class == "open") {
+        langBotton2.classList.remove('open');
+        langBotton2.classList.add('close');
+        langMode = 2;
+
+        for (var i = 0; i <= 8; i++) {
+            document.getElementById('nomalSubtitle' + (i + 1).toString()).style.display = "none";
+            document.getElementById('easySubtitle' + (i + 1).toString()).style.display = "block";
+            document.getElementById('englishSubtitle' + (i + 1).toString()).style.display = "none";
+        }
+
+        document.getElementById('nomalButton').style.display = "block";
+        document.getElementById('englishButton').style.display = "none";
+        document.getElementById('nomalButton2').style.display = "none";
+        document.getElementById('easyButton2').style.display = "block";
+
+    } else if (langBotton2Class == "close") {
+        langMode = 0;
+        langBotton2.classList.remove('close');
+        langBotton2.classList.add('open');
+
+        for (var i = 0; i <= 8; i++) {
+            document.getElementById('nomalSubtitle' + (i + 1).toString()).style.display = "block";
+            document.getElementById('easySubtitle' + (i + 1).toString()).style.display = "none";
+            document.getElementById('englishSubtitle' + (i + 1).toString()).style.display = "none";
+        }
+
+        document.getElementById('nomalButton').style.display = "block";
+        document.getElementById('englishButton').style.display = "none";
+        document.getElementById('nomalButton2').style.display = "block";
+        document.getElementById('easyButton2').style.display = "none";
+    }
+};
 
 //headerのページ遷移時と言語情報渡し
 document.getElementById("head-aboutus").onclick = function () {
