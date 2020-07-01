@@ -4,6 +4,18 @@ body {
   font-size: 20px;
 }
 
+@media screen and (max-width: 992px) {
+  body {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 769px) {
+  body {
+    font-size: 5px;
+  }
+}
+
 .wrap {
   overflow: hidden;
 }
@@ -41,18 +53,32 @@ header {
 }
 
 header .left_h {
-  width: 80%;
+  padding-left: 50px;
+  width: 82%;
   height: 80px;
   float: left;
 }
 
 header .left_h nav ul {
-  padding-left: 50px;
+  padding-left: -50px;
 }
 
 header .left_h nav ul li {
   list-style: none;
   display: inline-block;
+  font-size: 1.0rem;
+}
+
+@media screen and (max-width: 1310px) {
+  header .left_h nav ul li {
+    font-size: 0.65rem;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  header .left_h nav ul li {
+    font-size: 0.3rem;
+  }
 }
 
 header .left_h nav ul li a {
@@ -61,20 +87,6 @@ header .left_h nav ul li a {
   line-height: 80px;
   display: block;
   padding: 0 0.5rem;
-  font-size: 1.0rem;
-}
-
-@media screen and (max-width: 1310px) {
-  header .left_h nav ul li a {
-    font-size: 0.75rem;
-    padding: 0 0.3rem;
-  }
-}
-
-@media screen and (max-width: 992px) {
-  header .left_h nav ul li a {
-    font-size: 0.7rem;
-  }
 }
 
 header .left_h nav ul li a:hover {
@@ -82,7 +94,7 @@ header .left_h nav ul li a:hover {
 }
 
 header .right_h {
-  width: 20%;
+  width: 18%;
   height: 80px;
   float: right;
   text-align: center;
@@ -102,8 +114,19 @@ header label {
 
 @media screen and (max-width: 1310px) {
   header label {
-    width: 5.5rem;
+    width: 5.0rem;
   }
+}
+
+@media screen and (max-width: 992px) {
+  header label {
+    width: 4rem;
+  }
+}
+
+header label a {
+  text-decoration: none;
+  color: #363636;
 }
 
 header input {
@@ -114,11 +137,23 @@ header .right_h ul {
   position: absolute;
   top: 80px;
   right: 0;
-  width: 8rem;
+  width: 7rem;
   margin: 0;
   padding: 0;
   background: #C3C3C3;
   list-style: none;
+}
+
+@media screen and (max-width: 1310px) {
+  header .right_h ul {
+    width: 5.0rem;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  header .right_h ul {
+    width: 4rem;
+  }
 }
 
 header .right_h li {
@@ -131,71 +166,100 @@ header .right_h li {
   transition: all 0.5s;
 }
 
-header #type1:checked ~ #links1 li,
-header #type2:checked ~ #links2 li {
+header #type1:checked ~ #links1 li {
   height: 70px;
   opacity: 1;
   cursor: pointer;
 }
 
 .wraper {
-  min-height: 90vh;
-}
-
-section {
+  width: 100%;
+  padding: 3rem 5rem;
+  min-height: 95vh;
   background: #E4EBEF;
-  padding: 5rem;
+  font-weight: normal;
 }
 
-section .first_box {
+.wraper .first_box {
   width: 100%;
   overflow: hidden;
   margin-bottom: 2rem;
 }
 
-section .first_box #nomalStudios, section .first_box #englishStudios {
-  width: 330px;
+.wraper .first_box #studios {
+  width: 30%;
   float: right;
-  text-align: right;
 }
 
-@media screen and (max-width: 768px) {
-  section .first_box #nomalStudios, section .first_box #englishStudios {
+@media screen and (max-width: 769px) {
+  .wraper .first_box #studios {
+    width: 100%;
     float: none;
   }
 }
 
-section .first_box #nomalStudios > div, section .first_box #englishStudios > div {
-  width: 50px;
-  height: 50px;
-  display: inline-block;
-  text-align: center;
-  border: solid 3px #E4EBEF;
+.wraper .first_box #studios h3 {
+  margin-top: 0.5rem;
+  font-size: 1.5rem;
 }
 
-section .first_box #nomalStudios > div .studio-image, section .first_box #nomalStudios > div .studio-image-en, section .first_box #englishStudios > div .studio-image, section .first_box #englishStudios > div .studio-image-en {
-  width: 42px;
-  height: 42px;
+.wraper .first_box #studios div {
+  width: 100%;
+}
+
+.wraper .first_box #studios div div {
+  width: 4rem;
+  height: 4rem;
+  display: inline-block;
+}
+
+.wraper .first_box #studios div div a img {
+  display: block;
+  width: 3rem;
+  height: 3rem;
+  margin: 0 auto;
+}
+
+.wraper .first_box #studios div div span {
+  font-size: 0.2rem;
+  text-align: center;
+  display: none;
+}
+
+.wraper .first_box .faculty_title {
+  width: 60%;
+  float: left;
+}
+
+@media screen and (max-width: 769px) {
+  .wraper .first_box .faculty_title {
+    width: 100%;
+    float: none;
+  }
+}
+
+.wraper .first_box .faculty_title h1 {
+  font-size: 2.7rem;
+}
+
+.wraper .first_box .faculty_title h4 {
+  font-size: 1.5rem;
 }
 
 /*吹き出し*/
-section .first_box #nomalStudios > div,section .first_box #englishStudios > div{
+.wraper .first_box #nomalStudios > div,.wraper .first_box #englishStudios > div{
    display: inline-block;
 }
  
-/* ツールチップ部分を隠す */
-section .first_box #nomalStudios > div span ,section .first_box #englishStudios > div span{
-   display: none;
-}
  
 /* マウスオーバー */
-section .first_box #nomalStudios > div:hover, section .first_box #englishStudios > div:hover {
+.wraper .first_box #nomalStudios > div:hover, .wraper .first_box #englishStudios > div:hover {
     position: relative;
     color: #333;
 }
  
 /* マウスオーバー時にツールチップを表示 */
-section .first_box #nomalStudios > div:hover span,section .first_box #englishStudios > div:hover span {
+.wraper .first_box #nomalStudios > div:hover span,.wraper .first_box #englishStudios > div:hover span {
     display: block; /* ボックス要素にする */
     position: absolute; 
     top: 25px;
@@ -209,7 +273,7 @@ section .first_box #nomalStudios > div:hover span,section .first_box #englishStu
     z-index:100;
 }
  
-section .first_box #nomalStudios > div span:before,section .first_box #englishStudios > div span:before{
+.wraper .first_box #nomalStudios > div span:before,.wraper .first_box #englishStudios > div span:before{
     content:''; 
     display:block; 
     position:absolute; /* relativeからの絶対位置 */
@@ -225,51 +289,56 @@ section .first_box #nomalStudios > div span:before,section .first_box #englishSt
 }
 /*吹き出しここまで*/
 
-section .first_box h1 {
-  font-size: 2rem;
-}
 
-section .second_box {
+.wraper .second_box {
   width: 100%;
   overflow: hidden;
-  margin-bottom: 2rem;
   /* サムネイル */
 }
 
-section .second_box .right_box {
-  width: 30%;
+.wraper .second_box .right_box {
+  width: 25%;
+  text-align: right;
+  float: right;
 }
 
-section .second_box .right_box h3 {
+@media screen and (max-width: 769px) {
+  .wraper .second_box .right_box {
+    width: 100%;
+    text-align-last: left;
+    float: none;
+  }
+}
+
+.wraper .second_box .right_box h3 {
   font-size: 2rem;
-  margin-bottom: 2rem;
+  font-weight: normal;
+  padding-bottom: 1rem;
 }
 
-section .second_box .right_box h5 {
+.wraper .second_box .right_box h5 {
   font-size: 1.5rem;
+  font-weight: normal;
 }
 
-section .second_box .cp_cssslider {
-  width: 65%;
-  padding-top: 650px;
+.wraper .second_box .cp_cssslider {
+  width: 70%;
+  float: left;
+  padding-top: 700px;
   /* 画像の高さ */
   position: relative;
   text-align: center;
+  margin-bottom: 3rem;
 }
 
-@media screen and (max-width: 1025px) {
-  section .second_box .cp_cssslider {
-    padding-top: 450px;
+@media screen and (max-width: 769px) {
+  .wraper .second_box .cp_cssslider {
+    width: 100%;
+    float: none;
   }
 }
 
-@media screen and (max-width: 992px) {
-  section .second_box .cp_cssslider {
-    padding-top: 400px;
-  }
-}
-
-section .second_box .cp_cssslider > img {
+.wraper .second_box .cp_cssslider > img {
   width: 100%;
   position: absolute;
   left: 0;
@@ -279,11 +348,11 @@ section .second_box .cp_cssslider > img {
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
 }
 
-section .second_box .cp_cssslider input[name='cp_switch'] {
+.wraper .second_box .cp_cssslider input[name='cp_switch'] {
   display: none;
 }
 
-section .second_box .cp_cssslider label {
+.wraper .second_box .cp_cssslider label {
   margin: 15px 5px 0 5px;
   border: 2px solid #ffffff;
   display: inline-block;
@@ -293,60 +362,36 @@ section .second_box .cp_cssslider label {
   border-radius: 3px;
 }
 
-section .second_box .cp_cssslider label:hover {
+.wraper .second_box .cp_cssslider label:hover {
   opacity: 0.9;
 }
 
-section .second_box .cp_cssslider label img {
+.wraper .second_box .cp_cssslider label img {
   display: block;
   width: 100px;
   height: 80px;
   border-radius: 2px;
 }
 
-section .second_box .cp_cssslider input[name='cp_switch']:checked + label {
+.wraper .second_box .cp_cssslider input[name='cp_switch']:checked + label {
   border: 2px solid #FF7043;
   opacity: 1;
 }
 
-section .second_box .cp_cssslider input[name='cp_switch'] ~ img {
+.wraper .second_box .cp_cssslider input[name='cp_switch'] ~ img {
   opacity: 0;
 }
 
-section .second_box .cp_cssslider input[name='cp_switch']:checked + label + img {
+.wraper .second_box .cp_cssslider input[name='cp_switch']:checked + label + img {
   opacity: 1;
 }
 
-.faculty_title {
-  float: left;
-}
-
-@media screen and (max-width: 576px) {
-  .faculty_title {
-    float: none;
-  }
-}
-
-.right_box {
-  float: right;
-  text-align: right;
-}
-
-@media screen and (max-width: 768px) {
-  .right_box {
-    float: none;
-    text-align: left;
-    width: 40%;
-    font-size: 4rem;
-  }
-}
-
-p {
-  width: 80%;
+.wraper .text {
+  width: 75%;
   margin: 0 auto;
 }
 
-a.toTop {
+.wraper a.toTop {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
@@ -358,7 +403,7 @@ a.toTop {
   text-decoration: none;
 }
 
-a.toTop:hover {
+.wraper a.toTop:hover {
   opacity: 0.5;
 }
 
@@ -369,8 +414,10 @@ footer {
   padding: 1rem 0;
 }
 
-footer > p {
+footer p {
   text-align: center !important;
   color: #FFFFFF;
   margin-bottom: 0.3rem;
 }
+
+

@@ -16,7 +16,8 @@ const renderJson = (json) => {
         //const nomalStudioTitle = document.createElement("span");
         const nomalStudioLink = document.createElement("a");
         const nomalStudioImage = document.createElement("img");
-
+        const nomalStudioLinkName = document.createElement("span");
+        // nomalStudioLinkName.className = 'nomalCap';
         //リンクと画像にクラス名（日本語版サイト）
         nomalStudioLink.className = 'studio-link';
         nomalStudioImage.className = 'studio-image';
@@ -29,22 +30,47 @@ const renderJson = (json) => {
             }
             location.href = studios['name-short'].toString() + ".html" + langControll;
         };
+        nomalStudioLinkName.textContent = studios['name-ja'];
         nomalStudioImage.src = "../image/" + studios['name-short'].toString() + ".png";
         if (document.URL.match(studios['name-short'].toString())) {
             nomalStudioDiv.style.border = "solid 3px #0000c0";
         }
+        nomalStudioDiv.onmouseover = function () {
+            nomalStudioDiv.style.border = "solid 3px #ffffff";
+        };
+        nomalStudioDiv.onmouseout = function () {
+            if (document.URL.match(studios['name-short'].toString())) {
+                nomalStudioDiv.style.border = "solid 3px #0000c0";
+            } else {
+                nomalStudioDiv.style.border = "solid 3px #E4EBEF";
+            }
+        };
+
         //nomalStudioLink.textContent = studios['name-ja'];
         //nomalStudioImage.src = studios['photo1'];
 
         const englishStudioDiv = document.createElement('div');
         const englishStudioLink = document.createElement("a");
         const englishStudioImage = document.createElement("img");
+        const englishStudioLinkName = document.createElement("span");
+        // englishStudioLinkName.className = 'englishCap';
         if (document.URL.match(studios['name-short'].toString())) {
             englishStudioDiv.style.border = "solid 3px #0000c0";
         }
+        englishStudioDiv.onmouseover = function () {
+            englishStudioDiv.style.border = "solid 3px #ffffff";
+        };
+        englishStudioDiv.onmouseout = function () {
+            if (document.URL.match(studios['name-short'].toString())) {
+                englishStudioDiv.style.border = "solid 3px #0000c0";
+            } else {
+                englishStudioDiv.style.border = "solid 3px #E4EBEF";
+            }
+        };
         //リンクと画像にクラス名（英語版サイト）。でもこれ英語と日本語で分けなくても良かったかも。
         englishStudioLink.className = 'studio-link-en';
         englishStudioImage.className = 'studio-image-en'
+        englishStudioLinkName.textContent = studios['name-en'];
         englishStudioLink.onclick = function () {
             var langControll;
             langControll = "?lang=1";
@@ -53,19 +79,21 @@ const renderJson = (json) => {
         //englishStudioLink.textContent = studios['name-en'];
         englishStudioImage.src = "../image/" + studios['name-short'].toString() + ".png";
 
-
         nomalStudioLink.appendChild(nomalStudioImage);
         nomalStudioDiv.appendChild(nomalStudioLink);
+        nomalStudioDiv.appendChild(nomalStudioLinkName);
         document.getElementById('nomalStudios').appendChild(nomalStudioDiv);
         //englishStudioDiv.appendChild(englishStudioTitle);
         englishStudioLink.appendChild(englishStudioImage);
         englishStudioDiv.appendChild(englishStudioLink);
+        englishStudioDiv.appendChild(englishStudioLinkName);
         document.getElementById('englishStudios').appendChild(englishStudioDiv);
 
     });
 
     document.getElementById('result').textContent = JSON.stringify(json, null, 2);
 }
+
 
 //初回読み込み時の言語
 window.onload = function () {
@@ -176,6 +204,37 @@ window.onload = function () {
     }
 };
 
+/*
+document.getElementById('nomalStudios').onmouseover = function () {
+    document.getElementByClassName('nomalCap').style.display = "block";
+};
+document.getElementById('nomalStudios').onmouseout = function () {
+    document.getElementByClassName('nomalCap').style.display = "none";
+};
+
+document.getElementById('englishStudios').onmouseover = function () {
+    document.getElementByClassName('englishCap').style.display = "block";
+};
+document.getElementById('englishStudios').onmouseout = function () {
+    document.getElementByClassName('englishCap').style.display = "none";
+};
+*/
+
+/*
+document.getElementById('nomalStudios').onmouseover = function () {
+    if (langMode == 0) {
+        document.getElementByClassName('nomalCap').style.display = "block";
+    }
+};
+
+document.getElementById('englishStudios').onmouseover = function () {
+    if (langMode == 1) {
+        document.getElementByClassName('englishCap').style.display = "block";
+    }
+};*/
+
+
+
 
 //ページ内の切り替え
 document.getElementById("button").onclick = function () {
@@ -233,7 +292,7 @@ document.getElementById("button").onclick = function () {
         document.getElementById('easyContentsTitle4').style.display = "none";
 
         document.getElementById('nomalStudios').style.display = "none";
-        document.getElementById('englishStudios').style.display = "block";
+        document.getElementById('englishStudios').style.display = "inline-block";
 
     } else if (langBottonClass == "close") {
         langBotton.classList.remove('close');
@@ -281,7 +340,7 @@ document.getElementById("button").onclick = function () {
         document.getElementById('englishContentsTitle4').style.display = "none";
         document.getElementById('easyContentsTitle4').style.display = "none";
 
-        document.getElementById('nomalStudios').style.display = "block";
+        document.getElementById('nomalStudios').style.display = "inline-block";
         document.getElementById('englishStudios').style.display = "none";
     }
 };
@@ -336,7 +395,7 @@ document.getElementById("button2").onclick = function () {
         document.getElementById('englishContentsTitle4').style.display = "none";
         document.getElementById('easyContentsTitle4').style.display = "block";
 
-        document.getElementById('nomalStudios').style.display = "block";
+        document.getElementById('nomalStudios').style.display = "inline-block";
         document.getElementById('englishStudios').style.display = "none";
 
     } else if (langBotton2Class == "close") {
@@ -384,7 +443,7 @@ document.getElementById("button2").onclick = function () {
         document.getElementById('englishContentsTitle4').style.display = "none";
         document.getElementById('easyContentsTitle4').style.display = "none";
 
-        document.getElementById('nomalStudios').style.display = "block";
+        document.getElementById('nomalStudios').style.display = "inline-block";
         document.getElementById('englishStudios').style.display = "none";
     }
 };
