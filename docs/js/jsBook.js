@@ -5,6 +5,7 @@ const sheet = 'group4-book';
 //const sheet2 = "Faculty";
 const endpoint = `${uri}?id=${id}&sheet=${sheet}`;
 //const endpoint2 = `${uri}?id=${id}&sheet=${sheet2}`;
+var langMode = 0;
 
 var showloading = document.getElementById('showloading');
 var contents = document.getElementById('mainContent');
@@ -117,6 +118,9 @@ window.onload = function () {
         document.getElementById('nomalf').style.display = "none";
         document.getElementById('englishf').style.display = "block";
         document.getElementById('easyf').style.display = "none";
+
+        document.getElementById('nomalReturn').style.display = "none";
+        document.getElementById('englishReturn').style.display = "block";
     }
 
     else if (document.URL.match("/?lang=2")) {
@@ -145,6 +149,9 @@ window.onload = function () {
         document.getElementById('nomalf').style.display = "none";
         document.getElementById('englishf').style.display = "none";
         document.getElementById('easyf').style.display = "block";
+
+        document.getElementById('nomalReturn').style.display = "block";
+        document.getElementById('englishReturn').style.display = "none";
 
     }
 };
@@ -185,6 +192,9 @@ document.getElementById("button").onclick = function () {
         document.getElementById('englishf').style.display = "block";
         document.getElementById('easyf').style.display = "none";
 
+        document.getElementById('nomalReturn').style.display = "none";
+        document.getElementById('englishReturn').style.display = "block";
+
     } else if (langBottonClass == "close") {
         langBotton.classList.remove('close');
         langBotton.classList.add('open');
@@ -212,6 +222,9 @@ document.getElementById("button").onclick = function () {
         document.getElementById('nomalf').style.display = "block";
         document.getElementById('englishf').style.display = "none";
         document.getElementById('easyf').style.display = "none";
+
+        document.getElementById('nomalReturn').style.display = "block";
+        document.getElementById('englishReturn').style.display = "none";
     }
 };
 
@@ -247,6 +260,9 @@ document.getElementById("button2").onclick = function () {
         document.getElementById('englishf').style.display = "none";
         document.getElementById('easyf').style.display = "block";
 
+        document.getElementById('nomalReturn').style.display = "block";
+        document.getElementById('englishReturn').style.display = "none";
+
     } else if (langBotton2Class == "close") {
         langMode = 0;
         langBotton2.classList.remove('close');
@@ -273,6 +289,9 @@ document.getElementById("button2").onclick = function () {
         document.getElementById('nomalf').style.display = "block";
         document.getElementById('englishf').style.display = "none";
         document.getElementById('easyf').style.display = "none";
+
+        document.getElementById('nomalReturn').style.display = "block";
+        document.getElementById('englishReturn').style.display = "none";
     }
 };
 
@@ -395,4 +414,16 @@ document.getElementById("head-access").onclick = function () {
         langControll = "?lang=2";
     }
     location.href = "../index.html" + langControll + "#access";
+};
+
+document.getElementById("back").onclick = function () {
+    var langControll;
+    if (langMode == 0) {
+        langControll = "?lang=0";
+    } else if (langMode == 1) {
+        langControll = "?lang=1";
+    } else if (langMode == 2) {
+        langControll = "?lang=2";
+    }
+    location.href = "../index.html" + langControll;
 };
